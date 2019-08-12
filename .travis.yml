@@ -10,7 +10,7 @@ script:
   - docker run -e CI=true mariusble/docker-react npm run test
 
 deploy:
-  provider: elasticbeanstack
+  provider: elasticbeanstalk
   region: "eu-west-3"
   app: "docker-react"
   env: "DockerReact-env"
