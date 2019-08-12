@@ -7,4 +7,17 @@ before_install:
 
 script:
 #  - docker run mariusble/docker-react npm run test -- --coverage
-  - docker run -e CI=true mariusble/docker-react npm run test 
+  - docker run -e CI=true mariusble/docker-react npm run test
+
+deploy:
+  provider: elasticbeanstack
+  region: "eu-west-3"
+  app: "docker-react"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-eu-west-3-015249056795"
+  bucker_path: "docker-react"
+  on:
+    branch: master 
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
